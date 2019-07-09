@@ -42,8 +42,6 @@ namespace PassManager
             SaveTableButton.BringToFront();
             CopyButton.BringToFront();
 
-            
-
             FormTranslationDictionary = ReadTranslationFile("RU.json");
             ApplyTranslation(this, FormTranslationDictionary[this.GetType().Name]);
             programname = Text;

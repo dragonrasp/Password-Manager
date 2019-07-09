@@ -44,6 +44,7 @@ namespace PassManager
         public CreateKeyForm(List<string> keynames, string name, string password, Dictionary<string, string> dict, Dictionary<string, TranslationPair> translation)
         {
             InitializeComponent();
+            ApplyTranslation(this, translation);
             PNameBox.Text = name;
             PasswordBox.Text = password;
             NameList = keynames;
@@ -54,7 +55,7 @@ namespace PassManager
             string tmp = SR.ReadToEnd();
             SR.Close();
             replacementdict = JsonConvert.DeserializeObject<Dictionary<string, string>>(tmp);
-            ApplyTranslation(this, translation);
+            
         }
 
 
