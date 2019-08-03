@@ -1,0 +1,164 @@
+{
+  "CreateKeyForm": {
+    "checkBox2": {
+      "Text": "Randomize letters",
+      "Tooltip": null
+    },
+    "checkBox1": {
+      "Text": "Mnemonic generation",
+      "Tooltip": null
+    },
+    "label3": {
+      "Text": "Length",
+      "Tooltip": null
+    },
+    "": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "numericUpDown1": {
+      "Text": "15",
+      "Tooltip": null
+    },
+    "GenerateButton": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "PasswordBox": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "PNameBox": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "label2": {
+      "Text": "Password",
+      "Tooltip": null
+    },
+    "label1": {
+      "Text": "Password Name",
+      "Tooltip": null
+    },
+    "button2": {
+      "Text": "OK",
+      "Tooltip": null
+    },
+    "button1": {
+      "Text": "Cancel",
+      "Tooltip": null
+    },
+    "CreateKeyForm": {
+      "Text": "CreateKeyForm",
+      "Tooltip": null
+    }
+  },
+  "Form1": {
+    "CopyButton": {
+      "Text": "",
+      "Tooltip": "Copy to clipboard"
+    },
+    "SortButton": {
+      "Text": "",
+      "Tooltip": "Sort"
+    },
+    "DownButton": {
+      "Text": "",
+      "Tooltip": "Move down"
+    },
+    "UpButton": {
+      "Text": "",
+      "Tooltip": "Move up"
+    },
+    "SaveTableButton": {
+      "Text": "",
+      "Tooltip": "Save changes"
+    },
+    "AddToTableButton": {
+      "Text": "",
+      "Tooltip": "Add password"
+    },
+    "EditSelectedButton": {
+      "Text": "",
+      "Tooltip": "Edit password"
+    },
+    "DeleteSelectedButton": {
+      "Text": "",
+      "Tooltip": "Delete password"
+    },
+    "KeyNameColumn": {
+      "Text": "Name",
+      "Tooltip": ""
+    },
+    "PasswordColumn": {
+      "Text": "Password",
+      "Tooltip": ""
+    },
+    "button2": {
+      "Text": "",
+      "Tooltip": "Create password storage"
+    },
+    "button1": {
+      "Text": "",
+      "Tooltip": "Open password storage"
+    },
+    "fileToolStripMenuItem": {
+      "Text": "File",
+      "Tooltip": null
+    },
+    "openToolStripMenuItem": {
+      "Text": "Open",
+      "Tooltip": null
+    },
+    "createToolStripMenuItem": {
+      "Text": "Create",
+      "Tooltip": null
+    },
+    "exitToolStripMenuItem": {
+      "Text": "Exit",
+      "Tooltip": null
+    },
+    "programToolStripMenuItem": {
+      "Text": "Program",
+      "Tooltip": null
+    },
+    "settingsToolStripMenuItem": {
+      "Text": "Settings",
+      "Tooltip": null
+    },
+    "aboutToolStripMenuItem": {
+      "Text": "About",
+      "Tooltip": null
+    },
+    "menuStrip1": {
+      "Text": "menuStrip1",
+      "Tooltip": ""
+    },
+    "Form1": {
+      "Text": "Password Manager",
+      "Tooltip": ""
+    }
+  },
+  "PasswordForm": {
+    "checkBox1": {
+      "Text": "Show password",
+      "Tooltip": null
+    },
+    "button2": {
+      "Text": "Cancel",
+      "Tooltip": null
+    },
+    "button1": {
+      "Text": "OK",
+      "Tooltip": null
+    },
+    "textBox1": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "PasswordForm": {
+      "Text": "Password",
+      "Tooltip": null
+    }
+  }
+}

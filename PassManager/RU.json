@@ -1,0 +1,164 @@
+{
+  "CreateKeyForm": {
+    "checkBox2": {
+      "Text": "Случайная замена символов",
+      "Tooltip": null
+    },
+    "checkBox1": {
+      "Text": "Мнемоническая генерация",
+      "Tooltip": null
+    },
+    "label3": {
+      "Text": "Длина",
+      "Tooltip": null
+    },
+    "": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "numericUpDown1": {
+      "Text": "15",
+      "Tooltip": null
+    },
+    "GenerateButton": {
+      "Text": "",
+      "Tooltip": "Сгенерировать пароль"
+    },
+    "PasswordBox": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "PNameBox": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "label2": {
+      "Text": "Пароль",
+      "Tooltip": null
+    },
+    "label1": {
+      "Text": "Название пароля",
+      "Tooltip": null
+    },
+    "button2": {
+      "Text": "OK",
+      "Tooltip": null
+    },
+    "button1": {
+      "Text": "Отмена",
+      "Tooltip": null
+    },
+    "CreateKeyForm": {
+      "Text": "Создание пароля",
+      "Tooltip": null
+    }
+  },
+  "Form1": {
+    "CopyButton": {
+      "Text": "",
+      "Tooltip": "Копировать в буфер обмена"
+    },
+    "SortButton": {
+      "Text": "",
+      "Tooltip": "Сортировать"
+    },
+    "DownButton": {
+      "Text": "",
+      "Tooltip": "Переместить вниз"
+    },
+    "UpButton": {
+      "Text": "",
+      "Tooltip": "Переместить вверх"
+    },
+    "SaveTableButton": {
+      "Text": "",
+      "Tooltip": "Сохранить изменения"
+    },
+    "AddToTableButton": {
+      "Text": "",
+      "Tooltip": "Добавить пароль"
+    },
+    "EditSelectedButton": {
+      "Text": "",
+      "Tooltip": "Редактировать пароль"
+    },
+    "DeleteSelectedButton": {
+      "Text": "",
+      "Tooltip": "Удалить пароль"
+    },
+    "KeyNameColumn": {
+      "Text": "Название",
+      "Tooltip": ""
+    },
+    "PasswordColumn": {
+      "Text": "Пароль",
+      "Tooltip": ""
+    },
+    "button2": {
+      "Text": "",
+      "Tooltip": "Создать хранилище паролей"
+    },
+    "button1": {
+      "Text": "",
+      "Tooltip": "Открыть хранилище паролей"
+    },
+    "fileToolStripMenuItem": {
+      "Text": "Файл",
+      "Tooltip": null
+    },
+    "openToolStripMenuItem": {
+      "Text": "Открыть",
+      "Tooltip": null
+    },
+    "createToolStripMenuItem": {
+      "Text": "Создать",
+      "Tooltip": null
+    },
+    "exitToolStripMenuItem": {
+      "Text": "Выход",
+      "Tooltip": null
+    },
+    "programToolStripMenuItem": {
+      "Text": "Программа",
+      "Tooltip": null
+    },
+    "settingsToolStripMenuItem": {
+      "Text": "Настройки",
+      "Tooltip": null
+    },
+    "aboutToolStripMenuItem": {
+      "Text": "О программе",
+      "Tooltip": null
+    },
+    "menuStrip1": {
+      "Text": "menuStrip1",
+      "Tooltip": ""
+    },
+    "Form1": {
+      "Text": "Менеджер Паролей",
+      "Tooltip": ""
+    }
+  },
+  "PasswordForm": {
+    "checkBox1": {
+      "Text": "Показать пароль",
+      "Tooltip": null
+    },
+    "button2": {
+      "Text": "Отмена",
+      "Tooltip": null
+    },
+    "button1": {
+      "Text": "OK",
+      "Tooltip": null
+    },
+    "textBox1": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "PasswordForm": {
+      "Text": "Пароль",
+      "Tooltip": null
+    }
+  }
+}
