@@ -12,14 +12,13 @@ namespace PassManager
 {
     public partial class PasswordForm : Form
     {
-        //TESTING COMMENT 1 2 3 4
         public string pass;
 
         public PasswordForm()
         {
             InitializeComponent();
         }
-        
+
         public PasswordForm(Dictionary<string, TranslationPair> translation)
         {
             InitializeComponent();
