@@ -41,7 +41,7 @@ namespace PassManager
                 Close();
             }
             else
-                MessageBox.Show("Empty password", "Error");
+                MessageBox.Show(EmptyLabel.Text, ErrorLabel.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

@@ -73,12 +73,12 @@ namespace PassManager
                 }
                 else
                 {
-                    MessageBox.Show("This password name already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(PasswordExistsLabel.Text, ErrorLabel.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Not a valid name or/and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(NotValidLabel.Text, ErrorLabel.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

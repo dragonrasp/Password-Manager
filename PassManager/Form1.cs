@@ -71,7 +71,7 @@ namespace PassManager
             CopyButton.BringToFront();
 
             
-            FormTranslationDictionary = ReadTranslationFile("RU.json");
+            FormTranslationDictionary = ReadTranslationFile("EN.json");
             ApplyTranslation(this, FormTranslationDictionary[this.GetType().Name]);
             programname = Text;
 
@@ -639,7 +639,7 @@ namespace PassManager
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CreateTranslationFile("EN(new).json", true);
+            CreateTranslationFile("EN.json", true);
         }
     }
 }

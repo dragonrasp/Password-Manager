@@ -42,6 +42,9 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ErrorLabel = new System.Windows.Forms.Label();
+            this.PasswordExistsLabel = new System.Windows.Forms.Label();
+            this.NotValidLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,6 +162,36 @@
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.Visible = false;
             // 
+            // ErrorLabel
+            // 
+            this.ErrorLabel.AutoSize = true;
+            this.ErrorLabel.Location = new System.Drawing.Point(339, 175);
+            this.ErrorLabel.Name = "ErrorLabel";
+            this.ErrorLabel.Size = new System.Drawing.Size(29, 13);
+            this.ErrorLabel.TabIndex = 11;
+            this.ErrorLabel.Text = "Error";
+            this.ErrorLabel.Visible = false;
+            // 
+            // PasswordExistsLabel
+            // 
+            this.PasswordExistsLabel.AutoSize = true;
+            this.PasswordExistsLabel.Location = new System.Drawing.Point(325, 204);
+            this.PasswordExistsLabel.Name = "PasswordExistsLabel";
+            this.PasswordExistsLabel.Size = new System.Drawing.Size(170, 13);
+            this.PasswordExistsLabel.TabIndex = 12;
+            this.PasswordExistsLabel.Text = "This password name already exists";
+            this.PasswordExistsLabel.Visible = false;
+            // 
+            // NotValidLabel
+            // 
+            this.NotValidLabel.AutoSize = true;
+            this.NotValidLabel.Location = new System.Drawing.Point(327, 227);
+            this.NotValidLabel.Name = "NotValidLabel";
+            this.NotValidLabel.Size = new System.Drawing.Size(170, 13);
+            this.NotValidLabel.TabIndex = 13;
+            this.NotValidLabel.Text = "Not a valid name or/and password";
+            this.NotValidLabel.Visible = false;
+            // 
             // CreateKeyForm
             // 
             this.AcceptButton = this.button2;
@@ -166,6 +199,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(388, 309);
+            this.Controls.Add(this.NotValidLabel);
+            this.Controls.Add(this.PasswordExistsLabel);
+            this.Controls.Add(this.ErrorLabel);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
@@ -203,5 +239,8 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label ErrorLabel;
+        private System.Windows.Forms.Label PasswordExistsLabel;
+        private System.Windows.Forms.Label NotValidLabel;
     }
 }
