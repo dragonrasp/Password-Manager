@@ -63,8 +63,6 @@ namespace PassManager
             UnsavedChangesLabel.Text = "All unsaved changes will be lost. Do you want to save before quit?";
             CouldntCreateLabel.Text = "Couldn't create data base";
 
-           
-
 
             DataChanged += SetUnsavedFlag;
             DataChanged += ShowSaveButton;
@@ -307,10 +305,10 @@ namespace PassManager
             try
             {
                 bool unsaved = false;
-                
+
                 if (HasUnsavedData)
                 {
-                    
+
                     DialogResult DR = MessageBox.Show(SaveChangesLabel.Text, WarningLabel.Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                     if (DR == DialogResult.Yes)
                     {
@@ -331,8 +329,8 @@ namespace PassManager
                 }
 
                 if (!unsaved)
-                { 
-                openFileDialog1.Filter = "Encrypted Password Manager Files (*.EPM)|*.EPM|" + "All files (*.*)|*.*";
+                {
+                    openFileDialog1.Filter = "Encrypted Password Manager Files (*.EPM)|*.EPM|" + "All files (*.*)|*.*";
                     if (openFileDialog1.ShowDialog() == DialogResult.OK)
                     {
 
@@ -368,14 +366,14 @@ namespace PassManager
                                         {
                                             while (r.Read())
                                             {
-                                                
-                                                
+
+
                                                 byte[] encstring = (byte[])r["KeyName"];
                                                 string keyname = DecryptString(encstring, key, currentiv);
                                                 if (!decrypted)
                                                 {
                                                     dataGridView1.Rows.Clear();
-                                                    
+
                                                     decrypted = true;
                                                 }
                                                 dataGridView1.Rows.Add();
