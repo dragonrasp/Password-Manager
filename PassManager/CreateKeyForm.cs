@@ -28,9 +28,9 @@ namespace PassManager
             renaming = false;
             GeneratorDictionary = dict;
 
-           
 
-            ApplyTranslation(this, translation);
+            if (translation != null)
+                ApplyTranslation(this, translation);
         }
 
         public CreateKeyForm()
@@ -42,7 +42,8 @@ namespace PassManager
         public CreateKeyForm(List<string> keynames, string name, string login, string url, string password, Dictionary<string, string> dict, Dictionary<string, TranslationPair> translation)
         {
             InitializeComponent();
-            ApplyTranslation(this, translation);
+            if (translation != null)
+                ApplyTranslation(this, translation);
             PNameBox.Text = name;
             PasswordBox.Text = password;
             LoginBox.Text = login;

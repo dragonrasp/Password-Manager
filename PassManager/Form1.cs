@@ -49,8 +49,13 @@ namespace PassManager
             Read_Settings_File();
             Apply_Settings();
 
-            FormTranslationDictionary = ReadTranslationFile(Settings[TRANSLATION_DIRECTORY_PARAMETR]);
-            ApplyTranslation(this, FormTranslationDictionary[this.GetType().Name]);
+            try
+            {
+                FormTranslationDictionary = ReadTranslationFile(Settings[TRANSLATION_DIRECTORY_PARAMETR]);
+                ApplyTranslation(this, FormTranslationDictionary[this.GetType().Name]);
+            }
+            catch
+            { }
             
             programname = Text;
 
@@ -182,8 +187,12 @@ namespace PassManager
             TranslationDirectory = Settings[TRANSLATION_DIRECTORY_PARAMETR];
             ClipboardTimer = Convert.ToInt32(Settings[CLIPBOARD_TIMER_PARAMETER]);
 
-            FormTranslationDictionary = ReadTranslationFile(TranslationDirectory);
-            ApplyTranslation(this, FormTranslationDictionary[this.GetType().Name]);
+            try
+            {
+                FormTranslationDictionary = ReadTranslationFile(TranslationDirectory);
+                ApplyTranslation(this, FormTranslationDictionary[this.GetType().Name]);
+            }
+            catch { }
         }
         
         
@@ -193,7 +202,7 @@ namespace PassManager
                 saveFileDialog1.Filter = "Encrypted Password Manager Files (*.EPM)|*.EPM|" + "All files (*.*)|*.*";
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                using (PasswordForm PF = new PasswordForm(FormTranslationDictionary["PasswordForm"]))
+                using (PasswordForm PF = new PasswordForm(FormTranslationDictionary?["PasswordForm"]))
                 {
                     if (PF.ShowDialog() == DialogResult.OK)
                     {
@@ -242,7 +251,7 @@ namespace PassManager
 
         private void AddToTableButton_Click(object sender, EventArgs e)
         {
-            using (CreateKeyForm CK = new CreateKeyForm(CreateNameList(), GeneratorDictionary, FormTranslationDictionary["CreateKeyForm"]))
+            using (CreateKeyForm CK = new CreateKeyForm(CreateNameList(), GeneratorDictionary, FormTranslationDictionary?["CreateKeyForm"]))
             {
                 if (CK.ShowDialog() == DialogResult.OK)
                 {
@@ -266,7 +275,7 @@ namespace PassManager
         {
             if (dataGridView1.CurrentCell != null)
             {
-                using (CreateKeyForm CK = new CreateKeyForm(CreateNameList(), dataGridView1[0, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[2, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[3, dataGridView1.CurrentCell.RowIndex].Value.ToString(), GeneratorDictionary, FormTranslationDictionary["CreateKeyForm"]))
+                using (CreateKeyForm CK = new CreateKeyForm(CreateNameList(), dataGridView1[0, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[2, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[3, dataGridView1.CurrentCell.RowIndex].Value.ToString(), GeneratorDictionary, FormTranslationDictionary?["CreateKeyForm"]))
                 {
                     if (CK.ShowDialog() == DialogResult.OK)
                     {
@@ -283,7 +292,7 @@ namespace PassManager
 
         void Open_File(string path)
         {
-            using (PasswordForm PF = new PasswordForm(FormTranslationDictionary["PasswordForm"]))
+            using (PasswordForm PF = new PasswordForm(FormTranslationDictionary?["PasswordForm"]))
             {
 
                 if (PF.ShowDialog() == DialogResult.OK)
@@ -715,7 +724,7 @@ namespace PassManager
 
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (SettingsForm SF = new SettingsForm(Settings, FormTranslationDictionary["SettingsForm"]))
+            using (SettingsForm SF = new SettingsForm(Settings, FormTranslationDictionary?["SettingsForm"]))
             {
                 if (SF.ShowDialog() == DialogResult.OK)
                 {

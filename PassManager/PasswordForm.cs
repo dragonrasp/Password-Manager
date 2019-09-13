@@ -22,7 +22,8 @@ namespace PassManager
         public PasswordForm(Dictionary<string, TranslationPair> translation)
         {
             InitializeComponent();
-            ApplyTranslation(this, translation);
+            if (translation != null)
+                ApplyTranslation(this, translation);
             button1.Focus();
         }
 

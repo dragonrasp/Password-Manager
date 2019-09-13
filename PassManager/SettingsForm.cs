@@ -28,7 +28,8 @@ namespace PassManager
         public SettingsForm(Dictionary<string, string> stngs, Dictionary<string, TranslationPair> translation)
         {
             InitializeComponent();
-            ApplyTranslation(this, translation);
+            if (translation != null)
+                ApplyTranslation(this, translation);
             if (Convert.ToBoolean(stngs[HIDE_PASSWORDS_PARAMETER]))
                 HidePasswordCheckbox.Checked = true;
             else

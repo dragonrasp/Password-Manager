@@ -1,7 +1,31 @@
 {
   "CreateKeyForm": {
-    "checkBox2": {
-      "Text": "Случайная замена символов",
+    "URLBox": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "label5": {
+      "Text": "Адрес",
+      "Tooltip": ""
+    },
+    "LoginBox": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "label4": {
+      "Text": "Логин",
+      "Tooltip": ""
+    },
+    "NotValidLabel": {
+      "Text": "Некорректное название пароля или пароль",
+      "Tooltip": ""
+    },
+    "PasswordExistsLabel": {
+      "Text": "Такое название уже существует",
+      "Tooltip": ""
+    },
+    "ErrorLabel": {
+      "Text": "Ошибка",
       "Tooltip": ""
     },
     "checkBox1": {
@@ -54,20 +78,32 @@
     }
   },
   "Form1": {
-    "CopyButton": {
+    "pictureBox4": {
       "Text": "",
-      "Tooltip": "Копировать в буфер обмена"
+      "Tooltip": ""
+    },
+    "pictureBox3": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "LoginButton": {
+      "Text": "",
+      "Tooltip": "Скопировать логин в буфер обмена"
+    },
+    "URLButton": {
+      "Text": "",
+      "Tooltip": "Скопировать адрес в буфер обмена"
     },
     "CouldntCreateLabel": {
       "Text": "Не получилось создать базу данных",
       "Tooltip": ""
     },
     "UnsavedChangesLabel": {
-      "Text": "Все несохраненные изменения будут утеряны. Хотите сохранить изменения перед выходом?",
+      "Text": "Все несохраненные изменения будут потеряны. Сохранить изменения перед выходом?",
       "Tooltip": ""
     },
     "ConfirmPasswordDeletionLabel": {
-      "Text": "Подтвердите удаление: ",
+      "Text": "Подтвердите удаление пароля: ",
       "Tooltip": ""
     },
     "CouldntOpenLabel": {
@@ -75,7 +111,7 @@
       "Tooltip": ""
     },
     "SaveChangesLabel": {
-      "Text": "Хотите сохранить изменения?",
+      "Text": "Сохранить изменения?",
       "Tooltip": ""
     },
     "ErrorLabel": {
@@ -102,25 +138,29 @@
       "Text": "",
       "Tooltip": ""
     },
+    "CopyButton": {
+      "Text": "",
+      "Tooltip": "Скопировать пароль в буфер обмена"
+    },
     "SortButton": {
       "Text": "",
       "Tooltip": "Сортировать"
     },
     "DownButton": {
       "Text": "",
-      "Tooltip": "Переместить вниз"
+      "Tooltip": "Опустить вниз"
     },
     "UpButton": {
       "Text": "",
-      "Tooltip": "Переместить вверх"
-    },
-    "SaveTableButton": {
-      "Text": "",
-      "Tooltip": "Сохранить изменения"
+      "Tooltip": "Поднять вверх"
     },
     "pictureBox1": {
       "Text": "",
       "Tooltip": ""
+    },
+    "SaveTableButton": {
+      "Text": "",
+      "Tooltip": "Сохранить изменения"
     },
     "AddToTableButton": {
       "Text": "",
@@ -144,6 +184,14 @@
     },
     "KeyNameColumn": {
       "Text": "Название",
+      "Tooltip": ""
+    },
+    "LoginColumn": {
+      "Text": "Логин",
+      "Tooltip": ""
+    },
+    "URLColumn": {
+      "Text": "Адрес",
       "Tooltip": ""
     },
     "PasswordColumn": {
@@ -175,7 +223,7 @@
       "Tooltip": null
     },
     "exitToolStripMenuItem": {
-      "Text": "Выход",
+      "Text": "Выйти",
       "Tooltip": null
     },
     "programToolStripMenuItem": {
@@ -195,11 +243,19 @@
       "Tooltip": ""
     },
     "Form1": {
-      "Text": "Менеджер паролей",
+      "Text": "Менеджер Паролей",
       "Tooltip": ""
     }
   },
   "PasswordForm": {
+    "EmptyLabel": {
+      "Text": "Пустой пароль",
+      "Tooltip": ""
+    },
+    "ErrorLabel": {
+      "Text": "Ошибка",
+      "Tooltip": ""
+    },
     "checkBox1": {
       "Text": "Показать пароль",
       "Tooltip": ""
@@ -219,6 +275,56 @@
     "PasswordForm": {
       "Text": "Пароль",
       "Tooltip": ""
+    }
+  },
+  "SettingsForm": {
+    "label3": {
+      "Text": "секунд",
+      "Tooltip": null
+    },
+    "": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "numericUpDown1": {
+      "Text": "0",
+      "Tooltip": null
+    },
+    "label2": {
+      "Text": "Очистить буфер через",
+      "Tooltip": null
+    },
+    "CancelSettingsButton": {
+      "Text": "Отмена",
+      "Tooltip": null
+    },
+    "OKButton": {
+      "Text": "OK",
+      "Tooltip": null
+    },
+    "CreateTranslationButton": {
+      "Text": "Создать файл перевода по умолчанию",
+      "Tooltip": null
+    },
+    "TranslationBox": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "button1": {
+      "Text": "Выбрать файл перевода",
+      "Tooltip": null
+    },
+    "label1": {
+      "Text": "Файл перевода",
+      "Tooltip": null
+    },
+    "HidePasswordCheckbox": {
+      "Text": "Скрывать столбец с паролями",
+      "Tooltip": null
+    },
+    "SettingsForm": {
+      "Text": "Настройки",
+      "Tooltip": null
     }
   }
 }

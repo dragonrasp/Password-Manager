@@ -82,10 +82,6 @@
     }
   },
   "Form1": {
-    "CopyButton": {
-      "Text": "",
-      "Tooltip": "Copy to clipboard"
-    },
     "pictureBox4": {
       "Text": "",
       "Tooltip": ""
@@ -146,6 +142,10 @@
       "Text": "",
       "Tooltip": ""
     },
+    "CopyButton": {
+      "Text": "",
+      "Tooltip": "Copy password to clipboard"
+    },
     "SortButton": {
       "Text": "",
       "Tooltip": "Sort"
@@ -158,13 +158,13 @@
       "Text": "",
       "Tooltip": "Move up"
     },
-    "SaveTableButton": {
-      "Text": "",
-      "Tooltip": "Save changes"
-    },
     "pictureBox1": {
       "Text": "",
       "Tooltip": ""
+    },
+    "SaveTableButton": {
+      "Text": "",
+      "Tooltip": "Save changes"
     },
     "AddToTableButton": {
       "Text": "",
@@ -279,6 +279,56 @@
     "PasswordForm": {
       "Text": "Password",
       "Tooltip": ""
+    }
+  },
+  "SettingsForm": {
+    "label3": {
+      "Text": "seconds",
+      "Tooltip": null
+    },
+    "": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "numericUpDown1": {
+      "Text": "0",
+      "Tooltip": null
+    },
+    "label2": {
+      "Text": "Clear clipboard after",
+      "Tooltip": null
+    },
+    "CancelSettingsButton": {
+      "Text": "Cancel",
+      "Tooltip": null
+    },
+    "OKButton": {
+      "Text": "OK",
+      "Tooltip": null
+    },
+    "CreateTranslationButton": {
+      "Text": "Create default translation file",
+      "Tooltip": null
+    },
+    "TranslationBox": {
+      "Text": "",
+      "Tooltip": null
+    },
+    "button1": {
+      "Text": "Select translation file",
+      "Tooltip": null
+    },
+    "label1": {
+      "Text": "Translation file",
+      "Tooltip": null
+    },
+    "HidePasswordCheckbox": {
+      "Text": "Hide password column",
+      "Tooltip": null
+    },
+    "SettingsForm": {
+      "Text": "Settings",
+      "Tooltip": null
     }
   }
 }
