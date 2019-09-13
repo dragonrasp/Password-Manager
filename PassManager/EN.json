@@ -1,62 +1,150 @@
 {
   "CreateKeyForm": {
+    "URLBox": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "label5": {
+      "Text": "URL",
+      "Tooltip": ""
+    },
+    "LoginBox": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "label4": {
+      "Text": "Login",
+      "Tooltip": ""
+    },
+    "NotValidLabel": {
+      "Text": "Not a valid name or password",
+      "Tooltip": ""
+    },
+    "PasswordExistsLabel": {
+      "Text": "This password name already exists",
+      "Tooltip": ""
+    },
+    "ErrorLabel": {
+      "Text": "Error",
+      "Tooltip": ""
+    },
     "checkBox2": {
       "Text": "Randomize letters",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "checkBox1": {
       "Text": "Mnemonic generation",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "label3": {
       "Text": "Length",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "": {
       "Text": "",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "numericUpDown1": {
       "Text": "15",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "GenerateButton": {
       "Text": "",
-      "Tooltip": null
+      "Tooltip": "Generate password"
     },
     "PasswordBox": {
       "Text": "",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "PNameBox": {
       "Text": "",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "label2": {
       "Text": "Password",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "label1": {
       "Text": "Password Name",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "button2": {
       "Text": "OK",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "button1": {
       "Text": "Cancel",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "CreateKeyForm": {
-      "Text": "CreateKeyForm",
-      "Tooltip": null
+      "Text": "Create Password",
+      "Tooltip": ""
     }
   },
   "Form1": {
     "CopyButton": {
       "Text": "",
       "Tooltip": "Copy to clipboard"
+    },
+    "pictureBox4": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "pictureBox3": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "LoginButton": {
+      "Text": "",
+      "Tooltip": "Copy login to clipboard"
+    },
+    "URLButton": {
+      "Text": "",
+      "Tooltip": "Copy URL to clipboard"
+    },
+    "CouldntCreateLabel": {
+      "Text": "Couldn't create data base",
+      "Tooltip": ""
+    },
+    "UnsavedChangesLabel": {
+      "Text": "All unsaved changes will be lost. Do you want to save before quit?",
+      "Tooltip": ""
+    },
+    "ConfirmPasswordDeletionLabel": {
+      "Text": "Confirm deletion of password: ",
+      "Tooltip": ""
+    },
+    "CouldntOpenLabel": {
+      "Text": "Couldn't open databse",
+      "Tooltip": ""
+    },
+    "SaveChangesLabel": {
+      "Text": "Do you want to save changes?",
+      "Tooltip": ""
+    },
+    "ErrorLabel": {
+      "Text": "Error",
+      "Tooltip": ""
+    },
+    "WarningLabel": {
+      "Text": "Warning",
+      "Tooltip": ""
+    },
+    "button3": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "pictureBox2": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "SortRevPic": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "SortPic": {
+      "Text": "",
+      "Tooltip": ""
     },
     "SortButton": {
       "Text": "",
@@ -74,6 +162,10 @@
       "Text": "",
       "Tooltip": "Save changes"
     },
+    "pictureBox1": {
+      "Text": "",
+      "Tooltip": ""
+    },
     "AddToTableButton": {
       "Text": "",
       "Tooltip": "Add password"
@@ -86,12 +178,32 @@
       "Text": "",
       "Tooltip": "Delete password"
     },
+    "EditTablePanel": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "": {
+      "Text": "",
+      "Tooltip": ""
+    },
     "KeyNameColumn": {
       "Text": "Name",
       "Tooltip": ""
     },
+    "LoginColumn": {
+      "Text": "Login",
+      "Tooltip": ""
+    },
+    "URLColumn": {
+      "Text": "URL",
+      "Tooltip": ""
+    },
     "PasswordColumn": {
       "Text": "Password",
+      "Tooltip": ""
+    },
+    "dataGridView1": {
+      "Text": "",
       "Tooltip": ""
     },
     "button2": {
@@ -140,25 +252,33 @@
     }
   },
   "PasswordForm": {
+    "EmptyLabel": {
+      "Text": "Empty password",
+      "Tooltip": ""
+    },
+    "ErrorLabel": {
+      "Text": "Error",
+      "Tooltip": ""
+    },
     "checkBox1": {
       "Text": "Show password",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "button2": {
       "Text": "Cancel",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "button1": {
       "Text": "OK",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "textBox1": {
       "Text": "",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "PasswordForm": {
       "Text": "Password",
-      "Tooltip": null
+      "Tooltip": ""
     }
   }
 }

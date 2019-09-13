@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PassManager
 {
-    public class KeyPair
+    public class KeyData
     {
         public string Name
         {
@@ -19,16 +19,32 @@ namespace PassManager
             set;
         }
 
-        public KeyPair()
+        public string Login
+        {
+            get;
+            set;
+        }
+
+        public string URL
+        {
+            get;
+            set;
+        }
+
+        public KeyData()
         {
             Name = "";
             Password = "";
+            Login = "";
+            URL = "";
         }
 
-        public KeyPair(string n, string p)
+        public KeyData(string n, string p, string l, string u)
         {
             Name = n;
             Password = p;
+            Login = l;
+            URL = u;
         }
 
         public bool IsValid

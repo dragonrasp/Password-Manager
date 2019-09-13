@@ -2,23 +2,23 @@
   "CreateKeyForm": {
     "checkBox2": {
       "Text": "Случайная замена символов",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "checkBox1": {
       "Text": "Мнемоническая генерация",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "label3": {
       "Text": "Длина",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "": {
       "Text": "",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "numericUpDown1": {
       "Text": "15",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "GenerateButton": {
       "Text": "",
@@ -26,37 +26,81 @@
     },
     "PasswordBox": {
       "Text": "",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "PNameBox": {
       "Text": "",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "label2": {
       "Text": "Пароль",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "label1": {
       "Text": "Название пароля",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "button2": {
       "Text": "OK",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "button1": {
       "Text": "Отмена",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "CreateKeyForm": {
       "Text": "Создание пароля",
-      "Tooltip": null
+      "Tooltip": ""
     }
   },
   "Form1": {
     "CopyButton": {
       "Text": "",
       "Tooltip": "Копировать в буфер обмена"
+    },
+    "CouldntCreateLabel": {
+      "Text": "Не получилось создать базу данных",
+      "Tooltip": ""
+    },
+    "UnsavedChangesLabel": {
+      "Text": "Все несохраненные изменения будут утеряны. Хотите сохранить изменения перед выходом?",
+      "Tooltip": ""
+    },
+    "ConfirmPasswordDeletionLabel": {
+      "Text": "Подтвердите удаление: ",
+      "Tooltip": ""
+    },
+    "CouldntOpenLabel": {
+      "Text": "Не получилось открыть базу данных",
+      "Tooltip": ""
+    },
+    "SaveChangesLabel": {
+      "Text": "Хотите сохранить изменения?",
+      "Tooltip": ""
+    },
+    "ErrorLabel": {
+      "Text": "Ошибка",
+      "Tooltip": ""
+    },
+    "WarningLabel": {
+      "Text": "Предупреждение",
+      "Tooltip": ""
+    },
+    "button3": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "pictureBox2": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "SortRevPic": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "SortPic": {
+      "Text": "",
+      "Tooltip": ""
     },
     "SortButton": {
       "Text": "",
@@ -74,6 +118,10 @@
       "Text": "",
       "Tooltip": "Сохранить изменения"
     },
+    "pictureBox1": {
+      "Text": "",
+      "Tooltip": ""
+    },
     "AddToTableButton": {
       "Text": "",
       "Tooltip": "Добавить пароль"
@@ -86,12 +134,24 @@
       "Text": "",
       "Tooltip": "Удалить пароль"
     },
+    "EditTablePanel": {
+      "Text": "",
+      "Tooltip": ""
+    },
+    "": {
+      "Text": "",
+      "Tooltip": ""
+    },
     "KeyNameColumn": {
       "Text": "Название",
       "Tooltip": ""
     },
     "PasswordColumn": {
       "Text": "Пароль",
+      "Tooltip": ""
+    },
+    "dataGridView1": {
+      "Text": "",
       "Tooltip": ""
     },
     "button2": {
@@ -135,30 +195,30 @@
       "Tooltip": ""
     },
     "Form1": {
-      "Text": "Менеджер Паролей",
+      "Text": "Менеджер паролей",
       "Tooltip": ""
     }
   },
   "PasswordForm": {
     "checkBox1": {
       "Text": "Показать пароль",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "button2": {
       "Text": "Отмена",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "button1": {
       "Text": "OK",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "textBox1": {
       "Text": "",
-      "Tooltip": null
+      "Tooltip": ""
     },
     "PasswordForm": {
       "Text": "Пароль",
-      "Tooltip": null
+      "Tooltip": ""
     }
   }
 }

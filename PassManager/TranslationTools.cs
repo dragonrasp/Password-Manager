@@ -259,6 +259,7 @@ namespace PassManager
         {
             StreamReader SR = new StreamReader(filename);
             Dictionary<string, Dictionary<string, TranslationPair>> TransDictionary = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, TranslationPair>>>(SR.ReadToEnd());
+            SR.Close();
             return TransDictionary;
 
 

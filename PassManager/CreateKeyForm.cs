@@ -14,17 +14,12 @@ namespace PassManager
 {
     public partial class CreateKeyForm : Form
     {
-        public KeyPair res;
+        public KeyData res;
         List<string> NameList;
         bool renaming;
         Dictionary<string, string> GeneratorDictionary;
-        Dictionary<string, string> replacementdict;
-        const string REPLACEMENT_DICTIONARY = "replacement_table.json";
-
-        public CreateKeyForm()
-        {
-            InitializeComponent();
-        }
+        
+       
 
         public CreateKeyForm(List<string> keynames, Dictionary<string, string> dict, Dictionary<string, TranslationPair> translation)
         {             
@@ -33,35 +28,36 @@ namespace PassManager
             renaming = false;
             GeneratorDictionary = dict;
 
-            StreamReader SR = new StreamReader(REPLACEMENT_DICTIONARY);
-            string tmp = SR.ReadToEnd();
-            SR.Close();
-            replacementdict = JsonConvert.DeserializeObject<Dictionary<string, string>>(tmp);
+           
 
             ApplyTranslation(this, translation);
         }
 
-        public CreateKeyForm(List<string> keynames, string name, string password, Dictionary<string, string> dict, Dictionary<string, TranslationPair> translation)
+        public CreateKeyForm()
+        {
+            InitializeComponent();
+        }
+
+        
+        public CreateKeyForm(List<string> keynames, string name, string login, string url, string password, Dictionary<string, string> dict, Dictionary<string, TranslationPair> translation)
         {
             InitializeComponent();
             ApplyTranslation(this, translation);
             PNameBox.Text = name;
             PasswordBox.Text = password;
+            LoginBox.Text = login;
+            URLBox.Text = url;
             NameList = keynames;
             renaming = true;
             GeneratorDictionary = dict;
 
-            StreamReader SR = new StreamReader(REPLACEMENT_DICTIONARY);
-            string tmp = SR.ReadToEnd();
-            SR.Close();
-            replacementdict = JsonConvert.DeserializeObject<Dictionary<string, string>>(tmp);
             
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            KeyPair KP = new KeyPair(PNameBox.Text, PasswordBox.Text);
+            KeyData KP = new KeyData(PNameBox.Text, PasswordBox.Text, LoginBox.Text, URLBox.Text);
             if (KP.IsValid)
             {
                 
@@ -122,22 +118,7 @@ namespace PassManager
                 {
                     pass += GenerateCymbol(rnd);
                 }
-                if (checkBox2.Checked)
-                {
-
-                    string replacedpass = "";
-                    for (int i = 0; i < pass.Length; i++)
-                    {
-                        if (Char.IsLetter(pass[i]))
-                            if (rnd.Next(0, 100) > 70)
-                                replacedpass += replacementdict[Char.ToLower(pass[i]).ToString()][rnd.Next(0, replacementdict[Char.ToLower(pass[i]).ToString()].Length)];
-                            else
-                                replacedpass += pass[i];
-                        else
-                            replacedpass += pass[i];
-                    }
-                    pass = replacedpass;
-                }
+                
                 PasswordBox.Text = pass;
 
             }
@@ -163,14 +144,7 @@ namespace PassManager
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
-            {
-                checkBox2.Visible = true;
-            }
-            else
-            {
-                checkBox2.Visible = false;
-            }
+            
         }
     }
 }
