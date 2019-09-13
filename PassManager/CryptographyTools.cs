@@ -37,16 +37,6 @@ namespace PassManager
             return res;
         }
 
-        public static string GetStringFromByte(byte[] b)
-        {
-            return Encoding.Unicode.GetString(b);
-        }
-
-        public static byte[] GetBytesFromString(string s)
-        {
-            return Encoding.Unicode.GetBytes(s);
-        }
-
         public static byte[] EncryptString(string s, byte[] k, byte[] IV)
         {
             byte[] enc;
