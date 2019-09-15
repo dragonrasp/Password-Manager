@@ -147,7 +147,7 @@ namespace PassManager
         void Read_Settings_File()
         {
             string stngs;
-            if (File.Exists(SETTINGS_FILE_NAME))
+            try
             { 
                 using (StreamReader SR = new StreamReader(SETTINGS_FILE_NAME))
                 {
@@ -156,7 +156,7 @@ namespace PassManager
                 }
                 Settings = JsonConvert.DeserializeObject<Dictionary<string, string>>(stngs);
             }
-            else
+            catch
             {
                 Settings = new Dictionary<string, string>();
                 Settings.Add(HIDE_PASSWORDS_PARAMETER, "true");
