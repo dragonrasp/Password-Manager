@@ -552,6 +552,11 @@ namespace PassManager
                 DeleteSelectedButton.Enabled = false;
             }
         }
+        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            dataGridView1.Columns[3].Visible = !dataGridView1.Columns[3].Visible;
+            Settings[HIDE_PASSWORDS_PARAMETER] = (!dataGridView1.Columns[3].Visible).ToString();
+        }
 
         private void UpButton_Click(object sender, EventArgs e)
         {
