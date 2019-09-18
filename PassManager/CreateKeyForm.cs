@@ -15,22 +15,22 @@ namespace PassManager
     public partial class CreateKeyForm : Form
     {
         public KeyData res;
-        List<string> NameList;
+        List<string> nameList;
         bool renaming;
-        Dictionary<string, string> GeneratorDictionary;
+        Dictionary<string, string> generatorDictionary;
         
        
 
         public CreateKeyForm(List<string> keynames, Dictionary<string, string> dict, Dictionary<string, TranslationPair> translation)
         {             
             InitializeComponent();
-            NameList = keynames;
+            nameList = keynames;
             renaming = false;
-            GeneratorDictionary = dict;
+            generatorDictionary = dict;
 
 
             if (translation != null)
-                ApplyTranslation(this, translation);
+                Apply_Translation(this, translation);
         }
 
         public CreateKeyForm()
@@ -43,14 +43,14 @@ namespace PassManager
         {
             InitializeComponent();
             if (translation != null)
-                ApplyTranslation(this, translation);
+                Apply_Translation(this, translation);
             PNameBox.Text = name;
             PasswordBox.Text = password;
             LoginBox.Text = login;
             URLBox.Text = url;
-            NameList = keynames;
+            nameList = keynames;
             renaming = true;
-            GeneratorDictionary = dict;
+            generatorDictionary = dict;
 
             
         }
@@ -62,7 +62,7 @@ namespace PassManager
             if (KP.IsValid)
             {
                 
-                if (NameList.IndexOf(KP.Name) == -1 || renaming)
+                if (nameList.IndexOf(KP.Name) == -1 || renaming)
                 {
                     res = KP;
                     DialogResult = DialogResult.OK;
@@ -85,7 +85,7 @@ namespace PassManager
             Close();
         }
 
-        char GenerateCymbol(Random rnd)
+        char Generate_Cymbol(Random rnd)
         {
             char c = '_';
             while (!Char.IsLetterOrDigit(c))
@@ -109,15 +109,15 @@ namespace PassManager
                     pick = -1;
                     do
                     {
-                        pick = rnd.Next(0, GeneratorDictionary.Keys.Count);
-                    } while (GeneratorDictionary.ElementAt(pick).Key.Length > (int)numericUpDown1.Value - currentlength);
-                    currentlength += GeneratorDictionary.ElementAt(pick).Key.Length;
-                    pass += GeneratorDictionary.ElementAt(pick).Key;
+                        pick = rnd.Next(0, generatorDictionary.Keys.Count);
+                    } while (generatorDictionary.ElementAt(pick).Key.Length > (int)numericUpDown1.Value - currentlength);
+                    currentlength += generatorDictionary.ElementAt(pick).Key.Length;
+                    pass += generatorDictionary.ElementAt(pick).Key;
                 }
 
                 for (int i = currentlength; i < (int)numericUpDown1.Value; i++)
                 {
-                    pass += GenerateCymbol(rnd);
+                    pass += Generate_Cymbol(rnd);
                 }
                 
                 PasswordBox.Text = pass;
@@ -137,15 +137,5 @@ namespace PassManager
             }
         }
 
-        private void RollButton_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

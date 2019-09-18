@@ -41,7 +41,7 @@ namespace PassManager
        
 
 
-        static Control FindByNameControl(Control C, string name)
+        static Control Find_By_Name_Control(Control C, string name)
         {
             if (C.Name == name)
             {
@@ -51,7 +51,7 @@ namespace PassManager
             {
                 foreach (Control cc in C.Controls)
                 {
-                    Control res = FindByNameControl(cc, name);
+                    Control res = Find_By_Name_Control(cc, name);
                     if (res != null)
                         return res;
                 }
@@ -59,7 +59,7 @@ namespace PassManager
             return null;
         }
 
-        static ToolStripDropDownItem FindByNameDropDownItem(Control C, string name)
+        static ToolStripDropDownItem Find_By_Name_DropDownItem(Control C, string name)
         {
 
 
@@ -82,7 +82,7 @@ namespace PassManager
             {
                 foreach (Control CC in C.Controls)
                 {
-                    ToolStripDropDownItem tmp = FindByNameDropDownItem(CC, name);
+                    ToolStripDropDownItem tmp = Find_By_Name_DropDownItem(CC, name);
                     if (tmp != null)
                         return tmp;
                 }
@@ -92,7 +92,7 @@ namespace PassManager
             return null;
         }
 
-        static ToolStripMenuItem FindByNameMenuItem(Control C, string name)
+        static ToolStripMenuItem Find_By_Name_MenuItem(Control C, string name)
         {
             if (C.GetType() == typeof(MenuStrip))
             {
@@ -107,7 +107,7 @@ namespace PassManager
             {
                 foreach (Control CC in C.Controls)
                 {
-                    ToolStripMenuItem tmp = FindByNameMenuItem(CC, name);
+                    ToolStripMenuItem tmp = Find_By_Name_MenuItem(CC, name);
                     if (tmp != null)
                         return tmp;
                 }
@@ -115,7 +115,7 @@ namespace PassManager
             return null;
         }
 
-        static DataGridViewColumn FindByNameColumn(Control C, string name)
+        static DataGridViewColumn Find_By_Name_Column(Control C, string name)
         {
             if (C.GetType() == typeof(DataGridView))
             {
@@ -130,7 +130,7 @@ namespace PassManager
             {
                 foreach (Control CC in C.Controls)
                 {
-                    DataGridViewColumn tmp = FindByNameColumn(CC, name);
+                    DataGridViewColumn tmp = Find_By_Name_Column(CC, name);
                     if (tmp != null)
                         return tmp;
                 }
@@ -140,12 +140,12 @@ namespace PassManager
             return null;
         }
 
-        static void CollectNames(ref Dictionary<string, TranslationPair> D, Control C, ToolTip t)
+        static void Collect_Names(ref Dictionary<string, TranslationPair> D, Control C, ToolTip t)
         {
             if (C.Controls != null)
             {
                 foreach (Control CC in C.Controls)
-                    CollectNames(ref D, CC, t);
+                    Collect_Names(ref D, CC, t);
             }
             if (C.GetType() == typeof(DataGridView))
             {
@@ -189,7 +189,7 @@ namespace PassManager
 
 
 
-        static ToolTip GetToolTipFromForm(Form f)
+        static ToolTip Get_ToolTip_From_Form(Form f)
         {
             Type formType = f.GetType();
             FieldInfo fieldInfo = formType.GetField("components", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -203,7 +203,7 @@ namespace PassManager
             return t;
         }
 
-        public static void CreateTranslationFile(string filename, bool fulllist)
+        public static void Create_Translation_File(string filename, bool fulllist)
         {
 
             Dictionary<string, Dictionary<string, TranslationPair>> forms = new Dictionary<string, Dictionary<string, TranslationPair>>();
@@ -225,11 +225,11 @@ namespace PassManager
 
 
 
-                ToolTip t = GetToolTipFromForm(f);
+                ToolTip t = Get_ToolTip_From_Form(f);
 
 
                 Dictionary<string, TranslationPair> collection = forms[formname];
-                CollectNames(ref collection, f, t);
+                Collect_Names(ref collection, f, t);
 
                 if (!fulllist)
                 {
@@ -255,7 +255,7 @@ namespace PassManager
             SW.Close();
         }
 
-        public static Dictionary<string, Dictionary<string, TranslationPair>> ReadTranslationFile(string filename)
+        public static Dictionary<string, Dictionary<string, TranslationPair>> Read_Translation_File(string filename)
         {
             StreamReader SR = new StreamReader(filename);
             Dictionary<string, Dictionary<string, TranslationPair>> TransDictionary = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, TranslationPair>>>(SR.ReadToEnd());
@@ -265,29 +265,29 @@ namespace PassManager
 
         }
 
-        public static void ApplyTranslation(Control F, Dictionary<string, TranslationPair> TransDictionary)
+        public static void Apply_Translation(Control F, Dictionary<string, TranslationPair> TransDictionary)
         {
-            ToolTip t = GetToolTipFromForm((Form)F);
+            ToolTip t = Get_ToolTip_From_Form((Form)F);
             foreach (string key in TransDictionary.Keys)
             {
-                Control c = FindByNameControl(F, key);
+                Control c = Find_By_Name_Control(F, key);
                 if (c != null)
                 {
                     c.Text = TransDictionary[key].Text;
                 }
                 else
                 {
-                    ToolStripDropDownItem DDI = FindByNameDropDownItem(F, key);
+                    ToolStripDropDownItem DDI = Find_By_Name_DropDownItem(F, key);
                     if (DDI != null)
                         DDI.Text = TransDictionary[key].Text;
                     else
                     {
-                        DataGridViewColumn DGVC = FindByNameColumn(F, key);
+                        DataGridViewColumn DGVC = Find_By_Name_Column(F, key);
                         if (DGVC != null)
                             DGVC.HeaderText = TransDictionary[key].Text;
                         else
                         {
-                            ToolStripMenuItem TSMI = FindByNameMenuItem(F, key);
+                            ToolStripMenuItem TSMI = Find_By_Name_MenuItem(F, key);
                             if (TSMI != null)
                                 TSMI.Text = TransDictionary[key].Text;
 

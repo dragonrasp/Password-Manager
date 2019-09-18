@@ -40,7 +40,7 @@ namespace PassManager
         {
             InitializeComponent();
 
-            DataChanged += SetUnsavedFlag;
+            DataChanged += Set_Unsaved_Flag;
             DataChanged += Enable_Save_Button;
 
             SaveTableButton.BringToFront();
@@ -51,13 +51,13 @@ namespace PassManager
 
             try
             {
-                FormTranslationDictionary = ReadTranslationFile(Settings[TRANSLATION_DIRECTORY_PARAMETR]);
-                ApplyTranslation(this, FormTranslationDictionary[this.GetType().Name]);
+                FormTranslationDictionary = Read_Translation_File(Settings[TRANSLATION_DIRECTORY_PARAMETR]);
+                Apply_Translation(this, FormTranslationDictionary[this.GetType().Name]);
             }
             catch
             { }
             
-            programname = Text;
+            programName = Text;
 
             string tmp;
             try
@@ -102,38 +102,38 @@ namespace PassManager
         Dictionary<string, Dictionary<string, TranslationPair>> FormTranslationDictionary;
         Dictionary<string, string> Settings = new Dictionary<string, string>();
 
-        string programname;
-        string basename;
+        string programName;
+        string baseName;
         byte[] key;
-        byte[] currentiv;
+        byte[] currentIV;
         delegate void data_changed();
         event data_changed DataChanged;
 
-        int saveanimationtime = 0;
+        int saveAnimationTime = 0;
         
-        int bufferanimationdirection = 10;
-        int urlbufferanimationdirection = 10;
-        int loginbufferanimationdirection = 10;
-        int animationdirection = 10;
-        const int startcolor = 50;
-        const int maxcolor = 350;
-        int bufferanimationtime = startcolor;
-        int urlbufferanimationtime = startcolor;
-        int loginbufferanimationtime = startcolor;
+        int bufferAnimationDirection = 10;
+        int urlBufferAnimationDirection = 10;
+        int loginBufferAnimationDirection = 10;
+        int animationDirection = 10;
+        const int startColor = 50;
+        const int maxColor = 350;
+        int bufferAnimationTime = startColor;
+        int urlBufferAnimationTime = startColor;
+        int loginBufferAnimationTime = startColor;
 
-        bool HidePasswords;
-        string TranslationDirectory;
-        int ClipboardTimer;
+        bool hidePasswords;
+        string translationDirectory;
+        int clipboardTimer;
 
-        bool AscSort = true;
+        bool ascSort = true;
 
-        bool HasUnsavedData = false;
+        bool hasUnsavedData = false;
 
         
 
-        void SetUnsavedFlag()
+        void Set_Unsaved_Flag()
         {
-            HasUnsavedData = true;
+            hasUnsavedData = true;
         }
 
         void Enable_Save_Button()
@@ -144,7 +144,7 @@ namespace PassManager
 
         
 
-        List<string> CreateNameList()
+        List<string> Create_Name_List()
         {
             List<string> tmp = new List<string>();
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -189,19 +189,19 @@ namespace PassManager
 
         void Apply_Settings()
         {
-            HidePasswords = Convert.ToBoolean(Settings[HIDE_PASSWORDS_PARAMETER]);
-            if (HidePasswords)
+            hidePasswords = Convert.ToBoolean(Settings[HIDE_PASSWORDS_PARAMETER]);
+            if (hidePasswords)
                 dataGridView1.Columns[3].Visible = false;
             else
                 dataGridView1.Columns[3].Visible = true;
 
-            TranslationDirectory = Settings[TRANSLATION_DIRECTORY_PARAMETR];
-            ClipboardTimer = Convert.ToInt32(Settings[CLIPBOARD_TIMER_PARAMETER]);
+            translationDirectory = Settings[TRANSLATION_DIRECTORY_PARAMETR];
+            clipboardTimer = Convert.ToInt32(Settings[CLIPBOARD_TIMER_PARAMETER]);
 
             try
             {
-                FormTranslationDictionary = ReadTranslationFile(TranslationDirectory);
-                ApplyTranslation(this, FormTranslationDictionary[this.GetType().Name]);
+                FormTranslationDictionary = Read_Translation_File(translationDirectory);
+                Apply_Translation(this, FormTranslationDictionary[this.GetType().Name]);
             }
             catch { }
         }
@@ -217,13 +217,13 @@ namespace PassManager
                 {
                     if (PF.ShowDialog() == DialogResult.OK)
                     {
-                        basename = saveFileDialog1.FileName;
-                        key = ConvertToKey(PF.pass);
-                        currentiv = GenerateIV();
+                        baseName = saveFileDialog1.FileName;
+                        key = Convert_To_Key(PF.pass);
+                        currentIV = Generate_IV();
                         dataGridView1.Rows.Clear();
                         try
                         {
-                            using (SQLiteConnection SC = new SQLiteConnection("DataSource=" + basename))
+                            using (SQLiteConnection SC = new SQLiteConnection("DataSource=" + baseName))
                             {
                                 SC.Open();
                                 using (SQLiteCommand cmd = new SQLiteCommand(SC))
@@ -236,7 +236,7 @@ namespace PassManager
                                     cmd.ExecuteNonQuery();
 
 
-                                    cmd.Parameters.Add("@iv", DbType.Binary).Value = currentiv;
+                                    cmd.Parameters.Add("@iv", DbType.Binary).Value = currentIV;
                                     cmd.CommandText = @"insert into IV values (@iv)";
                                     cmd.ExecuteNonQuery();
                                 }
@@ -244,12 +244,12 @@ namespace PassManager
 
                             
                             SortButton.Enabled = true;
-                            AscSort = true;
+                            ascSort = true;
                             SortButton.BackgroundImage = SortPic.Image;
                             SaveTableButton.Enabled = false;
-                            HasUnsavedData = false;
+                            hasUnsavedData = false;
                             SortButton.BackgroundImage = SortPic.Image;
-                            Text = programname  +": " + Path.GetFileName(basename);
+                            Text = programName  +": " + Path.GetFileName(baseName);
                         }
                         catch
                         {
@@ -262,7 +262,7 @@ namespace PassManager
 
         private void AddToTableButton_Click(object sender, EventArgs e)
         {
-            using (CreateKeyForm CK = new CreateKeyForm(CreateNameList(), GeneratorDictionary, FormTranslationDictionary?["CreateKeyForm"]))
+            using (CreateKeyForm CK = new CreateKeyForm(Create_Name_List(), GeneratorDictionary, FormTranslationDictionary?["CreateKeyForm"]))
             {
                 if (CK.ShowDialog() == DialogResult.OK)
                 {
@@ -286,7 +286,7 @@ namespace PassManager
         {
             if (dataGridView1.CurrentCell != null)
             {
-                using (CreateKeyForm CK = new CreateKeyForm(CreateNameList(), dataGridView1[0, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[2, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[3, dataGridView1.CurrentCell.RowIndex].Value.ToString(), GeneratorDictionary, FormTranslationDictionary?["CreateKeyForm"]))
+                using (CreateKeyForm CK = new CreateKeyForm(Create_Name_List(), dataGridView1[0, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[2, dataGridView1.CurrentCell.RowIndex].Value.ToString(), dataGridView1[3, dataGridView1.CurrentCell.RowIndex].Value.ToString(), GeneratorDictionary, FormTranslationDictionary?["CreateKeyForm"]))
                 {
                     if (CK.ShowDialog() == DialogResult.OK)
                     {
@@ -308,9 +308,9 @@ namespace PassManager
 
                 if (PF.ShowDialog() == DialogResult.OK)
                 {
-                    basename = path;
-                    key = ConvertToKey(PF.pass);
-                    using (SQLiteConnection SC = new SQLiteConnection("Data Source=" + basename))
+                    baseName = path;
+                    key = Convert_To_Key(PF.pass);
+                    using (SQLiteConnection SC = new SQLiteConnection("Data Source=" + baseName))
                     {
                         SC.Open();
                         using (SQLiteCommand cmd = new SQLiteCommand(SC))
@@ -322,7 +322,7 @@ namespace PassManager
                             {
                                 while (r.Read())
                                 {
-                                    currentiv = (byte[])r[0];
+                                    currentIV = (byte[])r[0];
                                 }
 
                             }
@@ -336,7 +336,7 @@ namespace PassManager
                                 while (r.Read())
                                 {
                                     byte[] encstring = (byte[])r["KeyName"];
-                                    string keyname = DecryptString(encstring, key, currentiv);
+                                    string keyname = Decrypt_String(encstring, key, currentIV);
                                     if (!decrypted)
                                     {
                                         dataGridView1.Rows.Clear();
@@ -347,13 +347,13 @@ namespace PassManager
                                     dataGridView1[0, dataGridView1.Rows.Count - 1].Value = keyname;
 
                                     encstring = (byte[])r["Login"];
-                                    dataGridView1[1, dataGridView1.Rows.Count - 1].Value = DecryptString(encstring, key, currentiv);
+                                    dataGridView1[1, dataGridView1.Rows.Count - 1].Value = Decrypt_String(encstring, key, currentIV);
 
                                     encstring = (byte[])r["URL"];
-                                    dataGridView1[2, dataGridView1.Rows.Count - 1].Value = DecryptString(encstring, key, currentiv);
+                                    dataGridView1[2, dataGridView1.Rows.Count - 1].Value = Decrypt_String(encstring, key, currentIV);
 
                                     encstring = (byte[])r["Key"];
-                                    dataGridView1[3, dataGridView1.Rows.Count - 1].Value = DecryptString(encstring, key, currentiv);
+                                    dataGridView1[3, dataGridView1.Rows.Count - 1].Value = Decrypt_String(encstring, key, currentIV);
                                 }
                             }
 
@@ -361,11 +361,11 @@ namespace PassManager
                         
                         SortButton.Enabled = true;
                         AddToTableButton.Enabled = true;
-                        AscSort = true;
+                        ascSort = true;
                         SortButton.BackgroundImage = SortPic.Image;
                         SaveTableButton.Enabled = false;
-                        HasUnsavedData = false;
-                        Text = programname + ": " + Path.GetFileName(basename);
+                        hasUnsavedData = false;
+                        Text = programName + ": " + Path.GetFileName(baseName);
                     }
                 }
             }
@@ -377,7 +377,7 @@ namespace PassManager
             {
                 bool unsaved = false;
 
-                if (HasUnsavedData)
+                if (hasUnsavedData)
                 {
 
                     DialogResult DR = MessageBox.Show(SaveChangesLabel.Text, WarningLabel.Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
@@ -430,7 +430,7 @@ namespace PassManager
 
         private void SaveTableButton_Click(object sender, EventArgs e)
         {
-            using (SQLiteConnection SC = new SQLiteConnection("Data Source=" + basename))
+            using (SQLiteConnection SC = new SQLiteConnection("Data Source=" + baseName))
             {
                 SC.Open();
                 using (SQLiteCommand cmd = new SQLiteCommand(SC))
@@ -445,14 +445,14 @@ namespace PassManager
                     cmd.CommandText = @"insert into Keys values(@name, @pass, @log, @url)";
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
-                        cmd.Parameters.Add("@name", DbType.Binary).Value = EncryptString(dataGridView1[0, i].Value.ToString(), key, currentiv);
-                        cmd.Parameters.Add("@log", DbType.Binary).Value = EncryptString(dataGridView1[1,i].Value.ToString(), key, currentiv);
-                        cmd.Parameters.Add("@url", DbType.Binary).Value = EncryptString(dataGridView1[2, i].Value.ToString(), key, currentiv);
-                        cmd.Parameters.Add("@pass", DbType.Binary).Value = EncryptString(dataGridView1[3, i].Value.ToString(), key, currentiv);
+                        cmd.Parameters.Add("@name", DbType.Binary).Value = Encrypt_String(dataGridView1[0, i].Value.ToString(), key, currentIV);
+                        cmd.Parameters.Add("@log", DbType.Binary).Value = Encrypt_String(dataGridView1[1,i].Value.ToString(), key, currentIV);
+                        cmd.Parameters.Add("@url", DbType.Binary).Value = Encrypt_String(dataGridView1[2, i].Value.ToString(), key, currentIV);
+                        cmd.Parameters.Add("@pass", DbType.Binary).Value = Encrypt_String(dataGridView1[3, i].Value.ToString(), key, currentIV);
                         cmd.ExecuteNonQuery();
                     }
                     
-                    cmd.Parameters.Add("@iv", DbType.Binary).Value = currentiv;
+                    cmd.Parameters.Add("@iv", DbType.Binary).Value = currentIV;
                     cmd.CommandText = @"insert into IV values (@iv)";
                     cmd.ExecuteNonQuery();
                 }
@@ -461,19 +461,19 @@ namespace PassManager
 
             SaveTableButton.Enabled = false;
             SaveTableButton.Visible = false;
-            HasUnsavedData = false;
+            hasUnsavedData = false;
 
             pictureBox1.Visible = true;
             pictureBox1.BackColor = Color.FromArgb(0,0,0);
             AnimationTimer.Enabled = true;
 
-            animationdirection = Math.Abs(animationdirection);
-            saveanimationtime = startcolor;
+            animationDirection = Math.Abs(animationDirection);
+            saveAnimationTime = startColor;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (HasUnsavedData)
+            if (hasUnsavedData)
             {
                 DialogResult DR = MessageBox.Show(UnsavedChangesLabel.Text, WarningLabel.Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                 if (DR == DialogResult.Cancel)
@@ -493,7 +493,7 @@ namespace PassManager
         }
 
 
-        int ValidateColor(int value)
+        int Validate_Color(int value)
         {
             if (value < 0)
                 value = 0;
@@ -504,19 +504,19 @@ namespace PassManager
 
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
-            if (saveanimationtime >= startcolor)
+            if (saveAnimationTime >= startColor)
             {
-                saveanimationtime += animationdirection;
+                saveAnimationTime += animationDirection;
                 
-                pictureBox1.BackColor = Color.FromArgb(ValidateColor(saveanimationtime), ValidateColor(saveanimationtime),ValidateColor(saveanimationtime));
-                if (saveanimationtime > maxcolor)
-                    animationdirection *= -1;
+                pictureBox1.BackColor = Color.FromArgb(Validate_Color(saveAnimationTime), Validate_Color(saveAnimationTime),Validate_Color(saveAnimationTime));
+                if (saveAnimationTime > maxColor)
+                    animationDirection *= -1;
 
 
             }
             else
             {
-                saveanimationtime = startcolor;
+                saveAnimationTime = startColor;
                 AnimationTimer.Enabled = false;
                 pictureBox1.Visible = false;
                 SaveTableButton.Visible = true;
@@ -610,17 +610,17 @@ namespace PassManager
 
         private void SortButton_Click(object sender, EventArgs e)
         {
-            if (AscSort)
+            if (ascSort)
             {
                 dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
                 SortButton.BackgroundImage = SortRevPic.Image;
-                AscSort = false;
+                ascSort = false;
             }
             else
             {
                 dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Descending);
                 SortButton.BackgroundImage = SortPic.Image;
-                AscSort = true;
+                ascSort = true;
             }
             DataChanged();
 
@@ -638,24 +638,24 @@ namespace PassManager
 
         private void BufferAnimationTimer_Tick(object sender, EventArgs e)
         {
-            if (bufferanimationtime >= startcolor)
+            if (bufferAnimationTime >= startColor)
             {
-                bufferanimationtime += bufferanimationdirection;
+                bufferAnimationTime += bufferAnimationDirection;
 
-                pictureBox2.BackColor = Color.FromArgb(ValidateColor(bufferanimationtime), ValidateColor(bufferanimationtime), ValidateColor(bufferanimationtime));
-                if (bufferanimationtime > maxcolor)
-                    bufferanimationdirection *= -1;
+                pictureBox2.BackColor = Color.FromArgb(Validate_Color(bufferAnimationTime), Validate_Color(bufferAnimationTime), Validate_Color(bufferAnimationTime));
+                if (bufferAnimationTime > maxColor)
+                    bufferAnimationDirection *= -1;
 
 
             }
             else
             {
-                bufferanimationtime = startcolor;
+                bufferAnimationTime = startColor;
                 BufferAnimationTimer.Enabled = false;
                 pictureBox2.Visible = false;
                 CopyButton.Enabled = true;
                 CopyButton.Visible = true;
-                bufferanimationdirection = Math.Abs(bufferanimationdirection);
+                bufferAnimationDirection = Math.Abs(bufferAnimationDirection);
             }
         }
 
@@ -676,7 +676,7 @@ namespace PassManager
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CreateTranslationFile("EN(new).json", true);
+            Create_Translation_File("EN(new).json", true);
         }
 
         private void URLButton_Click(object sender, EventArgs e)
@@ -701,47 +701,47 @@ namespace PassManager
 
         private void URLBufferAnimationTimer_Tick(object sender, EventArgs e)
         {
-            if (urlbufferanimationtime >= startcolor)
+            if (urlBufferAnimationTime >= startColor)
             {
-                urlbufferanimationtime += urlbufferanimationdirection;
+                urlBufferAnimationTime += urlBufferAnimationDirection;
 
-                pictureBox4.BackColor = Color.FromArgb(ValidateColor(urlbufferanimationtime), ValidateColor(urlbufferanimationtime), ValidateColor(urlbufferanimationtime));
-                if (urlbufferanimationtime > maxcolor)
-                    urlbufferanimationdirection *= -1;
+                pictureBox4.BackColor = Color.FromArgb(Validate_Color(urlBufferAnimationTime), Validate_Color(urlBufferAnimationTime), Validate_Color(urlBufferAnimationTime));
+                if (urlBufferAnimationTime > maxColor)
+                    urlBufferAnimationDirection *= -1;
 
 
             }
             else
             {
-                urlbufferanimationtime = startcolor;
+                urlBufferAnimationTime = startColor;
                 URLBufferAnimationTimer.Enabled = false;
                 pictureBox4.Visible = false;
                 URLButton.Enabled = true;
                 URLButton.Visible = true;
-                urlbufferanimationdirection = Math.Abs(urlbufferanimationdirection);
+                urlBufferAnimationDirection = Math.Abs(urlBufferAnimationDirection);
             }
         }
 
         private void LoginBufferAnimationTimer_Tick(object sender, EventArgs e)
         {
-            if (loginbufferanimationtime >= startcolor)
+            if (loginBufferAnimationTime >= startColor)
             {
-                loginbufferanimationtime += loginbufferanimationdirection;
+                loginBufferAnimationTime += loginBufferAnimationDirection;
 
-                pictureBox3.BackColor = Color.FromArgb(ValidateColor(loginbufferanimationtime), ValidateColor(loginbufferanimationtime), ValidateColor(loginbufferanimationtime));
-                if (loginbufferanimationtime > maxcolor)
-                    loginbufferanimationdirection *= -1;
+                pictureBox3.BackColor = Color.FromArgb(Validate_Color(loginBufferAnimationTime), Validate_Color(loginBufferAnimationTime), Validate_Color(loginBufferAnimationTime));
+                if (loginBufferAnimationTime > maxColor)
+                    loginBufferAnimationDirection *= -1;
 
 
             }
             else
             {
-                loginbufferanimationtime = startcolor;
+                loginBufferAnimationTime = startColor;
                 LoginBufferAnimationTimer.Enabled = false;
                 pictureBox3.Visible = false;
                 LoginButton.Enabled = true;
                 LoginButton.Visible = true;
-                loginbufferanimationdirection = Math.Abs(loginbufferanimationdirection);
+                loginBufferAnimationDirection = Math.Abs(loginBufferAnimationDirection);
             }
         }
 
@@ -761,16 +761,16 @@ namespace PassManager
         {
             if (Convert.ToInt32(Settings[CLIPBOARD_TIMER_PARAMETER]) > 0)
             {
-                ClipboardTimer = Convert.ToInt32(Settings[CLIPBOARD_TIMER_PARAMETER]);
+                clipboardTimer = Convert.ToInt32(Settings[CLIPBOARD_TIMER_PARAMETER]);
                 ClipboardCountdown.Enabled = true;
             }
         }
 
         private void ClipboardCountdown_Tick(object sender, EventArgs e)
         {
-            if (ClipboardTimer > 0)
+            if (clipboardTimer > 0)
             {
-                ClipboardTimer--;
+                clipboardTimer--;
             }
             else
             {
@@ -790,7 +790,7 @@ namespace PassManager
             if (C.Enabled)
                 C.BackColor = Color.Orange;
             else
-                C.BackColor = Color.LightGray;
+                C.BackColor = Color.Gray;
         }
         private void AddToTableButton_EnabledChanged(object sender, EventArgs e)
         {

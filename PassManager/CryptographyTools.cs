@@ -13,7 +13,7 @@ namespace PassManager
 
         const int HASH_SIZE = 32;
         const int ITERATIONS = 1000;
-        public static byte[] GenerateIV()
+        public static byte[] Generate_IV()
         {
             byte[] vec;
             using (Aes aes = Aes.Create())
@@ -23,21 +23,21 @@ namespace PassManager
             return vec;
         }
 
-        public static byte[] GenerateSalt(string s)
+        public static byte[] Generate_Salt(string s)
         {
             byte[] tmp = Encoding.Unicode.GetBytes(s);
             Array.Resize(ref tmp, 8);
             return tmp;
         }
 
-        public static byte[] ConvertToKey(string pass)
+        public static byte[] Convert_To_Key(string pass)
         {
-            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(pass, GenerateSalt(pass), ITERATIONS);
+            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(pass, Generate_Salt(pass), ITERATIONS);
             byte[] res = pbkdf2.GetBytes(HASH_SIZE);
             return res;
         }
 
-        public static byte[] EncryptString(string s, byte[] k, byte[] IV)
+        public static byte[] Encrypt_String(string s, byte[] k, byte[] IV)
         {
             byte[] enc;
 
@@ -62,7 +62,7 @@ namespace PassManager
             return enc;
         }
 
-        public static string DecryptString(byte[] enc, byte[] k, byte[] IV)
+        public static string Decrypt_String(byte[] enc, byte[] k, byte[] IV)
         {
             byte[] encstring = enc;
             string res = null;

@@ -29,7 +29,7 @@ namespace PassManager
         {
             InitializeComponent();
             if (translation != null)
-                ApplyTranslation(this, translation);
+                Apply_Translation(this, translation);
             if (Convert.ToBoolean(stngs[HIDE_PASSWORDS_PARAMETER]))
                 HidePasswordCheckbox.Checked = true;
             else
@@ -55,7 +55,7 @@ namespace PassManager
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                CreateTranslationFile(saveFileDialog1.FileName, true);
+                Create_Translation_File(saveFileDialog1.FileName, true);
             }
         }
 

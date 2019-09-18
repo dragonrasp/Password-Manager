@@ -23,7 +23,7 @@ namespace PassManager
         {
             InitializeComponent();
             if (translation != null)
-                ApplyTranslation(this, translation);
+                Apply_Translation(this, translation);
             button1.Focus();
         }
 
