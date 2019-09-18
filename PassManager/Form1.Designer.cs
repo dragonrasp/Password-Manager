@@ -95,7 +95,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            this.button1.BackColor = System.Drawing.Color.Orange;
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -109,7 +109,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Gainsboro;
+            this.button2.BackColor = System.Drawing.Color.Orange;
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -151,7 +151,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(386, 300);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
+            this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             // 
             // KeyNameColumn
             // 
@@ -196,7 +196,7 @@
             // UpButton
             // 
             this.UpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.UpButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.UpButton.BackColor = System.Drawing.Color.Orange;
             this.UpButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UpButton.BackgroundImage")));
             this.UpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.UpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -206,13 +206,13 @@
             this.UpButton.TabIndex = 7;
             this.toolTip1.SetToolTip(this.UpButton, "Move up");
             this.UpButton.UseVisualStyleBackColor = false;
-            this.UpButton.Visible = false;
+            this.UpButton.EnabledChanged += new System.EventHandler(this.UpButton_EnabledChanged);
             this.UpButton.Click += new System.EventHandler(this.UpButton_Click);
             // 
             // DownButton
             // 
             this.DownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DownButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.DownButton.BackColor = System.Drawing.Color.Orange;
             this.DownButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DownButton.BackgroundImage")));
             this.DownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.DownButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -222,13 +222,13 @@
             this.DownButton.TabIndex = 8;
             this.toolTip1.SetToolTip(this.DownButton, "Move down");
             this.DownButton.UseVisualStyleBackColor = false;
-            this.DownButton.Visible = false;
+            this.DownButton.EnabledChanged += new System.EventHandler(this.DownButton_EnabledChanged);
             this.DownButton.Click += new System.EventHandler(this.DownButton_Click);
             // 
             // SortButton
             // 
             this.SortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SortButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.SortButton.BackColor = System.Drawing.Color.Orange;
             this.SortButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SortButton.BackgroundImage")));
             this.SortButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -238,13 +238,13 @@
             this.SortButton.TabIndex = 9;
             this.toolTip1.SetToolTip(this.SortButton, "Sort");
             this.SortButton.UseVisualStyleBackColor = false;
-            this.SortButton.Visible = false;
+            this.SortButton.EnabledChanged += new System.EventHandler(this.SortButton_EnabledChanged);
             this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
             // 
             // CopyButton
             // 
             this.CopyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CopyButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.CopyButton.BackColor = System.Drawing.Color.Orange;
             this.CopyButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CopyButton.BackgroundImage")));
             this.CopyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CopyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -254,7 +254,7 @@
             this.CopyButton.TabIndex = 12;
             this.toolTip1.SetToolTip(this.CopyButton, "Copy password to clipboard");
             this.CopyButton.UseVisualStyleBackColor = false;
-            this.CopyButton.Visible = false;
+            this.CopyButton.EnabledChanged += new System.EventHandler(this.CopyButton_EnabledChanged);
             this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
             // 
             // SortPic
@@ -296,7 +296,7 @@
             // 
             // DeleteSelectedButton
             // 
-            this.DeleteSelectedButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.DeleteSelectedButton.BackColor = System.Drawing.Color.Orange;
             this.DeleteSelectedButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteSelectedButton.BackgroundImage")));
             this.DeleteSelectedButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.DeleteSelectedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -306,11 +306,12 @@
             this.DeleteSelectedButton.TabIndex = 4;
             this.toolTip1.SetToolTip(this.DeleteSelectedButton, "Delete password");
             this.DeleteSelectedButton.UseVisualStyleBackColor = false;
+            this.DeleteSelectedButton.EnabledChanged += new System.EventHandler(this.DeleteSelectedButton_EnabledChanged);
             this.DeleteSelectedButton.Click += new System.EventHandler(this.DeleteSelectedButton_Click);
             // 
             // EditSelectedButton
             // 
-            this.EditSelectedButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.EditSelectedButton.BackColor = System.Drawing.Color.Orange;
             this.EditSelectedButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditSelectedButton.BackgroundImage")));
             this.EditSelectedButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.EditSelectedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -320,11 +321,12 @@
             this.EditSelectedButton.TabIndex = 3;
             this.toolTip1.SetToolTip(this.EditSelectedButton, "Edit password");
             this.EditSelectedButton.UseVisualStyleBackColor = false;
+            this.EditSelectedButton.EnabledChanged += new System.EventHandler(this.EditSelectedButton_EnabledChanged);
             this.EditSelectedButton.Click += new System.EventHandler(this.EditSelectedButton_Click);
             // 
             // AddToTableButton
             // 
-            this.AddToTableButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.AddToTableButton.BackColor = System.Drawing.Color.Orange;
             this.AddToTableButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddToTableButton.BackgroundImage")));
             this.AddToTableButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.AddToTableButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -334,11 +336,12 @@
             this.AddToTableButton.TabIndex = 2;
             this.toolTip1.SetToolTip(this.AddToTableButton, "Add password");
             this.AddToTableButton.UseVisualStyleBackColor = false;
+            this.AddToTableButton.EnabledChanged += new System.EventHandler(this.AddToTableButton_EnabledChanged);
             this.AddToTableButton.Click += new System.EventHandler(this.AddToTableButton_Click);
             // 
             // SaveTableButton
             // 
-            this.SaveTableButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.SaveTableButton.BackColor = System.Drawing.Color.Orange;
             this.SaveTableButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SaveTableButton.BackgroundImage")));
             this.SaveTableButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SaveTableButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -348,13 +351,13 @@
             this.SaveTableButton.TabIndex = 5;
             this.toolTip1.SetToolTip(this.SaveTableButton, "Save changes");
             this.SaveTableButton.UseVisualStyleBackColor = false;
-            this.SaveTableButton.Visible = false;
+            this.SaveTableButton.EnabledChanged += new System.EventHandler(this.SaveTableButton_EnabledChanged);
             this.SaveTableButton.Click += new System.EventHandler(this.SaveTableButton_Click);
             // 
             // URLButton
             // 
             this.URLButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.URLButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.URLButton.BackColor = System.Drawing.Color.Orange;
             this.URLButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("URLButton.BackgroundImage")));
             this.URLButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.URLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -364,13 +367,13 @@
             this.URLButton.TabIndex = 10;
             this.toolTip1.SetToolTip(this.URLButton, "Copy URL to clipboard");
             this.URLButton.UseVisualStyleBackColor = false;
-            this.URLButton.Visible = false;
+            this.URLButton.EnabledChanged += new System.EventHandler(this.URLButton_EnabledChanged);
             this.URLButton.Click += new System.EventHandler(this.URLButton_Click);
             // 
             // LoginButton
             // 
             this.LoginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoginButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.LoginButton.BackColor = System.Drawing.Color.Orange;
             this.LoginButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LoginButton.BackgroundImage")));
             this.LoginButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -380,7 +383,7 @@
             this.LoginButton.TabIndex = 11;
             this.toolTip1.SetToolTip(this.LoginButton, "Copy login to clipboard");
             this.LoginButton.UseVisualStyleBackColor = false;
-            this.LoginButton.Visible = false;
+            this.LoginButton.EnabledChanged += new System.EventHandler(this.LoginButton_EnabledChanged);
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // pictureBox1
@@ -420,7 +423,7 @@
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -428,20 +431,20 @@
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
             this.createToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.createToolStripMenuItem.Text = "Create";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(148, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -458,19 +461,19 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(113, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -486,7 +489,6 @@
             this.EditTablePanel.Name = "EditTablePanel";
             this.EditTablePanel.Size = new System.Drawing.Size(257, 60);
             this.EditTablePanel.TabIndex = 6;
-            this.EditTablePanel.Visible = false;
             // 
             // button3
             // 

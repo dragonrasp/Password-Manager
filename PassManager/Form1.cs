@@ -41,7 +41,7 @@ namespace PassManager
             InitializeComponent();
 
             DataChanged += SetUnsavedFlag;
-            DataChanged += ShowSaveButton;
+            DataChanged += Enable_Save_Button;
 
             SaveTableButton.BringToFront();
             CopyButton.BringToFront();
@@ -80,6 +80,17 @@ namespace PassManager
             {
                 Open_File(args[0]);
             }
+
+            AddToTableButton.Enabled = false;
+            EditSelectedButton.Enabled = false;
+            DeleteSelectedButton.Enabled = false;
+            SaveTableButton.Enabled = false;
+            UpButton.Enabled = false;
+            DownButton.Enabled = false;
+            SortButton.Enabled = false;
+            URLButton.Enabled = false;
+            LoginButton.Enabled = false;
+            CopyButton.Enabled = false;
         }
 
         const string SETTINGS_FILE_NAME = "settings.json";
@@ -125,9 +136,9 @@ namespace PassManager
             HasUnsavedData = true;
         }
 
-        void ShowSaveButton()
+        void Enable_Save_Button()
         {
-            SaveTableButton.Visible = true;
+            SaveTableButton.Enabled = true;
         }
 
 
@@ -231,11 +242,11 @@ namespace PassManager
                                 }
                             }
 
-                            EditTablePanel.Visible = true;
-                            SortButton.Visible = true;
+                            
+                            SortButton.Enabled = true;
                             AscSort = true;
                             SortButton.BackgroundImage = SortPic.Image;
-                            SaveTableButton.Visible = false;
+                            SaveTableButton.Enabled = false;
                             HasUnsavedData = false;
                             SortButton.BackgroundImage = SortPic.Image;
                             Text = programname  +": " + Path.GetFileName(basename);
@@ -347,11 +358,12 @@ namespace PassManager
                             }
 
                         }
-                        EditTablePanel.Visible = true;
-                        SortButton.Visible = true;
+                        
+                        SortButton.Enabled = true;
+                        AddToTableButton.Enabled = true;
                         AscSort = true;
                         SortButton.BackgroundImage = SortPic.Image;
-                        SaveTableButton.Visible = false;
+                        SaveTableButton.Enabled = false;
                         HasUnsavedData = false;
                         Text = programname + ": " + Path.GetFileName(basename);
                     }
@@ -447,6 +459,7 @@ namespace PassManager
 
             }
 
+            SaveTableButton.Enabled = false;
             SaveTableButton.Visible = false;
             HasUnsavedData = false;
 
@@ -506,6 +519,7 @@ namespace PassManager
                 saveanimationtime = startcolor;
                 AnimationTimer.Enabled = false;
                 pictureBox1.Visible = false;
+                SaveTableButton.Visible = true;
             }
 
         }
@@ -519,19 +533,23 @@ namespace PassManager
         {
             if (dataGridView1.SelectedCells.Count > 0)
             {
-                UpButton.Visible = true;
-                DownButton.Visible = true;
-                CopyButton.Visible = true;
-                URLButton.Visible = true;
-                LoginButton.Visible = true;
+                UpButton.Enabled = true;
+                DownButton.Enabled = true;
+                CopyButton.Enabled = true;
+                URLButton.Enabled = true;
+                LoginButton.Enabled = true;
+                EditSelectedButton.Enabled = true;
+                DeleteSelectedButton.Enabled = true;
             }
             else
             {
-                UpButton.Visible = false;
-                DownButton.Visible = false;
-                CopyButton.Visible = false;
-                URLButton.Visible = false;
-                LoginButton.Visible = false;
+                UpButton.Enabled = false;
+                DownButton.Enabled = false;
+                CopyButton.Enabled = false;
+                URLButton.Enabled = false;
+                LoginButton.Enabled = false;
+                EditSelectedButton.Enabled = false;
+                DeleteSelectedButton.Enabled = false;
             }
         }
 
@@ -607,6 +625,7 @@ namespace PassManager
         {
             Clipboard.SetText(dataGridView1[3, dataGridView1.CurrentCell.RowIndex].Value.ToString());
             CopyButton.Visible = false;
+            CopyButton.Enabled = false;
             BufferAnimationTimer.Enabled = true;
             pictureBox2.Visible = true;
             Start_Buffer_Countdown();
@@ -629,6 +648,7 @@ namespace PassManager
                 bufferanimationtime = startcolor;
                 BufferAnimationTimer.Enabled = false;
                 pictureBox2.Visible = false;
+                CopyButton.Enabled = true;
                 CopyButton.Visible = true;
                 bufferanimationdirection = Math.Abs(bufferanimationdirection);
             }
@@ -649,12 +669,6 @@ namespace PassManager
             Close();
         }
 
-        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            dataGridView1.Columns[3].Visible = !dataGridView1.Columns[3].Visible;
-            Settings[HIDE_PASSWORDS_PARAMETER] = (!dataGridView1.Columns[3].Visible).ToString();
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             CreateTranslationFile("EN(new).json", true);
@@ -663,6 +677,7 @@ namespace PassManager
         private void URLButton_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(dataGridView1[2, dataGridView1.CurrentCell.RowIndex].Value.ToString());
+            URLButton.Enabled = false;
             URLButton.Visible = false;
             URLBufferAnimationTimer.Enabled = true;
             pictureBox4.Visible = true;
@@ -672,6 +687,7 @@ namespace PassManager
         private void LoginButton_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString());
+            LoginButton.Enabled = false;
             LoginButton.Visible = false;
             LoginBufferAnimationTimer.Enabled = true;
             pictureBox3.Visible = true;
@@ -695,6 +711,7 @@ namespace PassManager
                 urlbufferanimationtime = startcolor;
                 URLBufferAnimationTimer.Enabled = false;
                 pictureBox4.Visible = false;
+                URLButton.Enabled = true;
                 URLButton.Visible = true;
                 urlbufferanimationdirection = Math.Abs(urlbufferanimationdirection);
             }
@@ -717,6 +734,7 @@ namespace PassManager
                 loginbufferanimationtime = startcolor;
                 LoginBufferAnimationTimer.Enabled = false;
                 pictureBox3.Visible = false;
+                LoginButton.Enabled = true;
                 LoginButton.Visible = true;
                 loginbufferanimationdirection = Math.Abs(loginbufferanimationdirection);
             }
@@ -759,6 +777,64 @@ namespace PassManager
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Password Manager\rDragonRasp raspbd@gmail.com\r2019\rGNU General Public License v3.0", aboutToolStripMenuItem.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        void Enabled_Control_Color_Switch(object c)
+        {
+            Control C = c as Control;
+            if (C.Enabled)
+                C.BackColor = Color.Orange;
+            else
+                C.BackColor = Color.LightGray;
+        }
+        private void AddToTableButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
+        }
+
+        private void EditSelectedButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
+        }
+
+        private void DeleteSelectedButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
+        }
+
+        private void SaveTableButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
+        }
+
+        private void UpButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
+        }
+
+        private void DownButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
+        }
+
+        private void SortButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
+        }
+
+        private void URLButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
+        }
+
+        private void LoginButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
+        }
+
+        private void CopyButton_EnabledChanged(object sender, EventArgs e)
+        {
+            Enabled_Control_Color_Switch(sender);
         }
     }
 }
